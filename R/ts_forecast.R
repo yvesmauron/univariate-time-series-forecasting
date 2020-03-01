@@ -37,7 +37,7 @@
   # create time series object
   y <- ts(data = as.vector(inputData$Value), end = tail(date_int, 1), frequency = unique(inputData$Frequency))
   # create 
-  forunco <- tritelligence::forunco(
+  forunco <- forunco::forunco(
     y = y, 
     h = h,
     levels = levels,
@@ -138,7 +138,7 @@ rx_sql_forunco <- function(connection_string,
   sqlServerCC <- RxInSqlServer(
     connectionString = connection_string, 
     numTasks = 1, 
-    packagesToLoad = c('tritelligence', 'dplyr')
+    packagesToLoad = c('forunco', 'dplyr')
   )
   # set most important options
   rxOptions(numCoresToUse=num_cores)
@@ -213,7 +213,7 @@ rx_sql_forunco <- function(connection_string,
 #'
 #' @examples
 #' \dontrun{
-#' library(tritelligence)
+#' library(forunco)
 #' library(Mcomp)
 #' m3 <- M3[2000:2025]
 #' #a time series colllection has n elements, each of which is a time series
@@ -271,7 +271,7 @@ forecast_forunco <- function(ts_col,
                              # of sql server  
                              ...) {
   # load packages
-  #require(tritelligence)
+  #require(forunco)
   require(foreach)
   require(doSNOW)
   require(parallel)
@@ -299,7 +299,7 @@ forecast_forunco <- function(ts_col,
   cl <- makeCluster(num_cores - num_cores_ignore, type = "SOCK")
   registerDoSNOW(cl)
   clusterEvalQ(cl, { 
-    library(tritelligence); 
+    library(forunco); 
     library(dplyr); 
     library(forecast)
   })
