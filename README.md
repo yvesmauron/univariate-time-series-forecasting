@@ -10,7 +10,7 @@ Note that you need access the this repository to do this; please ask the maintai
 
 ```{R}
 library(devtools)
-devtools::install_github(repo = 'yvesmauron/forunco', ref = 'master')
+devtools::install_github(repo = 'yvesmauron/univariate-time-series-forecasting', ref = 'master')
 ```
 
 ### Installation via Docker Image
